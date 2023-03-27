@@ -31,6 +31,7 @@ function guidGenerator() {
     S4()
   );
 }
+const baseUrl= process.env.API_BASE_URL;
 
 function AddExperiance() {
   const [organization, setOrganization] = useState("");
@@ -57,7 +58,7 @@ function AddExperiance() {
       alert(validationErrors.join("\n"));
       return;
     } else {
-      fetch("http://localhost:8000/experiance", {
+      fetch(`${baseUrl}/experiance`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(experiance),

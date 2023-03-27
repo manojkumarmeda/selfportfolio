@@ -1,13 +1,13 @@
 import React, { useEffect,useState } from 'react'
 import '../styles/Projects.css';
 import ProjectItem from '../components/ProjectItem';
-//import { projectList } from '../helpers/ProjectList';
+const baseUrl = process.env.React_App_API_BASE_URL;
 
 function Projects() {
   const[projectList,setProjectList]= useState(null);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/projects").then(res=>{
+    fetch(`${baseUrl}/projects`).then(res=>{
       return res.json();
     }).then((resp)=>{
       setProjectList(resp);

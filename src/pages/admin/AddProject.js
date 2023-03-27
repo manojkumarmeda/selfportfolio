@@ -29,6 +29,8 @@ function guidGenerator() {
   );
 }
 
+const baseUrl= process.env.API_BASE_URL;
+
 const AddProject = () => {
   const [projectName, setProjectName] = useState("");
   const [clientName, setClient] = useState("");
@@ -55,7 +57,7 @@ const AddProject = () => {
       alert(validationErrors.join("\n"));
       return;
     } else {
-      fetch("http://localhost:8000/projects", {
+      fetch(`${baseUrl}/projects`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(experiance),
